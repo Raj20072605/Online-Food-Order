@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodieHub - Online Food Ordering</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                🍔 FoodieHub
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+
+            <button class="cart-btn" onclick="openCart()">
+                🛒 Cart
+                <span id="cartCount">0</span>
+            </button>
+
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <p class="welcome">WELCOME TO FOODIEHUB</p>
+
+            <h1>
+                Delicious Food,
+                <span>Delivered Fast.</span>
+            </h1>
+
+            <p>
+                Discover delicious meals from your favourite
+                categories and order your food with just a few clicks.
+            </p>
+
+            <a href="#menu" class="order-btn">
+                Order Now →
+            </a>
+
+        </div>
+
+        <div class="hero-food">
+            🍕
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+    <section class="search-section">
+
+        <h2>What are you craving?</h2>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search pizza, burger, biryani..."
+                onkeyup="searchFood()"
+            >
+
+            <button onclick="searchFood()">
+                🔍 Search
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="categories" id="categories">
+
+        <h2>Food Categories</h2>
+
+        <div class="category-container">
+
+            <button onclick="filterCategory('all')">
+                🍽️ All
+            </button>
+
+            <button onclick="filterCategory('pizza')">
+                🍕 Pizza
+            </button>
+
+            <button onclick="filterCategory('burger')">
+                🍔 Burgers
+            </button>
+
+            <button onclick="filterCategory('indian')">
+                🍛 Indian
+            </button>
+
+            <button onclick="filterCategory('chinese')">
+                🥡 Chinese
+            </button>
+
+            <button onclick="filterCategory('dessert')">
+                🍰 Desserts
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENU -->
+    <section class="menu-section" id="menu">
+
+        <div class="section-heading">
+
+            <p class="small-title">OUR MENU</p>
+
+            <h2>Popular Dishes</h2>
+
+        </div>
+
+
+        <div class="food-container" id="foodContainer">
+
+
+            <!-- FOOD 1 -->
+            <div class="food-card"
+                 data-category="pizza"
+                 data-name="Margherita Pizza">
+
+                <div class="food-image pizza">
+                    🍕
+                </div>
+
+                <div class="food-info">
+
+                    <p class="food-category">
+                        PIZZA
+                    </p>
+
+                    <h3>Margherita Pizza</h3>
+
+                    <p>
+                        Classic cheese pizza with fresh
+                        tomato and basil.
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹249</strong>
+
+                        <button onclick="addToCart('Margherita Pizza',249)">
+                            Add +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 2 -->
+            <div class="food-card"
+                 data-category="burger"
+                 data-name="Classic Burger">
+
+                <div class="food-image burger">
+                    🍔
+                </div>
+
+                <div class="food-info">
+
+                    <p class="food-category">
+                        BURGER
+                    </p>
+
+                    <h3>Classic Burger</h3>
+
+                    <p>
+                        Juicy vegetable patty with cheese
+                        and fresh vegetables.
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹199</strong>
+
+                        <button onclick="addToCart('Classic Burger',199)">
+                            Add +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 3 -->
+            <div class="food-card"
+                 data-category="indian"
+                 data-name="Paneer Biryani">
+
+                <div class="food-image biryani">
+                    🍛
+                </div>
+
+                <div class="food-info">
+
+                    <p class="food-category">
+                        INDIAN
+                    </p>
+
+                    <h3>Paneer Biryani</h3>
+
+                    <p>
+                        Fragrant basmati rice with paneer
+                        and aromatic spices.
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹279</strong>
+
+                        <button onclick="addToCart('Paneer Biryani',279)">
+                            Add +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 4 -->
+            <div class="food-card"
+                 data-category="chinese"
+                 data-name="Veg Hakka Noodles">
+
+                <div class="food-image noodles">
+                    🥡
+                </div>
+
+                <div class="food-info">
+
+                    <p class="food-category">
+                        CHINESE
+                    </p>
+
+                    <h3>Veg Hakka Noodles</h3>
+
+                    <p>
+                        Stir-fried noodles with fresh
+                        vegetables and sauces.
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹189</strong>
+
+                        <button onclick="addToCart('Veg Hakka Noodles',189)">
+                            Add +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 5 -->
+            <div class="food-card"
+                 data-category="pizza"
+                 data-name="Farmhouse Pizza">
+
+                <div class="food-image farmhouse">
+                    🍕
+                </div>
+
+                <div class="food-info">
+
+                    <p class="food-category">
+                        PIZZA
+                    </p>
+
+                    <h3>Farmhouse Pizza</h3>
+
+                    <p>
+                        Loaded with fresh vegetables
+                        and melted cheese.
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹329</strong>
+
+                        <button onclick="addToCart('Farmhouse Pizza',329)">
+                            Add +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOD 6 -->
+            <div class="food-card"
+                 data-category="dessert"
+                 data-name="Chocolate Brownie">
+
+                <div class="food-image dessert">
+                    🍰
+                </div>
+
+                <div class="food-info">
+
+                    <p class="food-category">
+                        DESSERT
+                    </p>
+
+                    <h3>Chocolate Brownie</h3>
+
+                    <p>
+                        Soft and delicious chocolate brownie
+                        served fresh.
+                    </p>
+
+                    <div class="food-bottom">
+
+                        <strong>₹149</strong>
+
+                        <button onclick="addToCart('Chocolate Brownie',149)">
+                            Add +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <div>
+
+            <p class="small-title">
+                WHY FOODIEHUB?
+            </p>
+
+            <h2>
+                Good food.
+                Great moments.
+            </h2>
+
+            <p>
+                FoodieHub makes ordering your favourite food
+                simple, quick and convenient. Choose your
+                favourite dish, add it to your cart and place
+                your order in seconds.
+            </p>
+
+        </div>
+
+        <div class="stats">
+
+            <div>
+                <strong>100+</strong>
+                <span>Dishes</span>
+            </div>
+
+            <div>
+                <strong>50+</strong>
+                <span>Restaurants</span>
+            </div>
+
+            <div>
+                <strong>10K+</strong>
+                <span>Customers</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CART MODAL -->
+    <div class="cart-modal" id="cartModal">
+
+        <div class="cart-box">
+
+            <button class="close-btn" onclick="closeCart()">
+                ✕
+            </button>
+
+            <h2>🛒 Your Cart</h2>
+
+            <div id="cartItems">
+
+                <p class="empty-cart">
+                    Your cart is empty.
+                </p>
+
+            </div>
+
+            <div class="cart-total">
+
+                <span>Total</span>
+
+                <strong>
+                    ₹<span id="cartTotal">0</span>
+                </strong>
+
+            </div>
+
+            <button class="checkout-btn" onclick="checkout()">
+                Place Order
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-logo">
+            🍔 FoodieHub
+        </div>
+
+        <p>
+            Delicious food delivered to your doorstep.
+        </p>
+
+        <p>
+            © 2026 FoodieHub. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
